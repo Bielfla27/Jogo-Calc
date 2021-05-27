@@ -28,18 +28,61 @@ int main(){
  }
 
  void mostrarInfo(Calcular calc){
-     //falta implementar
+      char op[25];
+      if(calc.operacao == 0){
+            sprintf(op, "Somar");//colocando um valor na varíavel 
+      }else if (calc.operacao == 1 ){
+            sprintf(op, "Dimunuir");//colocando um valor na varíavel 
+      }else if (calc.operacao == 2 ){
+            sprintf(op, "Multiplicar");//colocando um valor na varíavel 
+      }else{
+          sprintf(op, "Operação desconhecida");
+      }
+      printf("Valor 1: %d \nValor 2: %d \nDificuldade: %d\nOperação: %s", calc.valor1,calc.valor2,calc.dificuldade,op);   
  } 
 
  int somar (int resposta, Calcular calc){
-     //falta implementar
+     int resultado =  calc.valor1 + calc.valor2; 
+     calc.resultado = resultado;
+     int certo = 0;  //0  ==  errou , 1 == acertou 
+
+     if(resposta == calc.resultado){
+         printf("Resposta correta!\n");
+         certo = 1;
+     }else{
+         printf("Resposta errada!\n");
+     }
+     printf("%d + %d = %d\n", calc.valor1, calc.valor2, calc.resultado);
+     return certo;
  }
 
  int diminuir(int resposta, Calcular calc){
-     //falta implementar
+     int resultado =  calc.valor1 - calc.valor2; 
+     calc.resultado = resultado;
+     int certo = 0;  //0  ==  errou , 1 == acertou 
+
+     if(resposta == calc.resultado){
+         printf("Resposta correta!\n");
+         certo = 1;
+     }else{
+         printf("Resposta errada!\n");
+     }
+     printf("%d - %d = %d\n", calc.valor1, calc.valor2, calc.resultado);
+     return certo;
  }
 
  int multiplicar(int resposta, Calcular calc){
-     
+     int resultado =  calc.valor1 * calc.valor2; 
+     calc.resultado = resultado;
+     int certo = 0;  //0  ==  errou , 1 == acertou 
+
+     if(resposta == calc.resultado){
+         printf("Resposta correta!\n");
+         certo = 1;
+     }else{
+         printf("Resposta errada!\n");
+     }
+     printf("%d * %d = %d\n", calc.valor1, calc.valor2, calc.resultado);
+     return certo; 
  }
 
