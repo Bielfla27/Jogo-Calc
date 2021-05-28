@@ -24,7 +24,73 @@ int main(){
  }
 
  void jogar(){
-     //falta implementar
+    Calcular calc; 
+    int dificuldade;   
+    printf("Informe o nível de  ade desejado [1 ,2, 3, ou 4]:\n");
+    scanf("%d" ,&dificuldade);
+    calc.dificuldade = dificuldade;
+
+    //Gera um int randômico entre 0 e 2
+    //0 == somar , 1 == diminuir , 2 ==  multiplicar
+    calc.operacao =  rand() % 3; // valor final vai ser entre 0 até 3-1
+
+    if(calc.dificuldade == 1){
+        //fácil
+        calc.valor1 = rand() % 11; //0 a 10
+        calc.valor2 = rand() % 11; //0 a 10
+    }else if (calc.dificuldade == 2){
+        //médio
+        calc.valor1 = rand() % 101; //0 a 100
+        calc.valor2 = rand() % 101; //0 a 100
+    }else if(calc.dificuldade == 3){
+        //difícil 
+        calc.valor1 = rand() % 1001; //0 a 1000
+        calc.valor2 = rand() % 1001; //0 a 1000
+    }else if(calc.dificuldade == 4){
+        //insano
+        calc.valor1 = rand() % 10001; //0 a 10000
+        calc.valor2 = rand() % 10001; //0 a 10000
+    }else{
+        //nível últra pq não obedeceu a regra e digitou coisa errada
+        calc.valor1 = rand() % 100001; //0 a 100000
+        calc.valor2 = rand() % 100001; //0 a 100000
+    }
+
+    int resposta;
+    printf("Informe o resultado para a seguinte opração:  \n");
+
+    //somar 
+    if(calc.operacao == 0){
+        printf("%d + %d\n" , calc.valor1, calc.valor2);
+        scanf("%d" ,&resposta);
+
+        if(somar(resposta,calc)){
+            pontos += 1;
+            printf("Você tem %d ponto(s).\n",pontos);
+        }
+    }//Diminuir
+    else if(calc.operacao == 1){
+        printf("%d - %d\n" , calc.valor1, calc.valor2);
+        scanf("%d" ,&resposta);
+
+        if(diminuir(resposta,calc)){
+            pontos += 1;
+            printf("Você tem %d ponto(s).\n",pontos);
+        }
+    }//multiplicação
+    if(calc.operacao == 2){
+        printf("%d * %d\n" , calc.valor1, calc.valor2);
+        scanf("%d" ,&resposta);
+
+        if(multiplicar(resposta,calc)){
+            pontos += 1;
+            printf("Você tem %d ponto(s).\n",pontos);
+        }
+    }//desconhecida
+    else{
+        printf("A operação %d não é reconhecida\n" ,calc.operacao);
+    }
+
  }
 
  void mostrarInfo(Calcular calc){
