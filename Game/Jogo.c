@@ -11,6 +11,9 @@
  
 void jogar();
 void mostrarInfo(Calcular calc);
+int somar(int resposta, Calcular calc);
+int diminuir(int resposta, Calcular calc);
+int multiplicar(int resposta, Calcular calc);
 
 int pontos = 0;
 
@@ -26,7 +29,7 @@ int main(){
  void jogar(){
     Calcular calc; 
     int dificuldade;   
-    printf("Informe o nível de  ade desejado [1 ,2, 3, ou 4]:\n");
+    printf("Informe o nível desejado [1 ,2, 3, ou 4]:\n");
     scanf("%d" ,&dificuldade);
     calc.dificuldade = dificuldade;
 
@@ -89,6 +92,22 @@ int main(){
     }//desconhecida
     else{
         printf("A operação %d não é reconhecida\n" ,calc.operacao);
+    }
+
+    //Mostrar Info
+    //mostrarInfo(calc);
+
+    //Recomeçar o jogor 
+    printf("Deseja continura jogando? [1-sim , 0 - não]\n");
+    int continuar;  
+    scanf("%d" ,&continuar);
+
+    if(continuar){
+        jogar();
+    }else{
+        printf("Você finalizou com %d ponto(s)\n",pontos);
+        printf("Até a próxima.");
+        exit(0);
     }
 
  }
